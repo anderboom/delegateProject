@@ -27,7 +27,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="editButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lqD-X7-6X1"/>
                                     <segue destination="L2S-Sf-bfx" kind="show" identifier="moveToEdit" id="yeH-8g-RgP"/>
                                 </connections>
                             </button>

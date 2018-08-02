@@ -21,21 +21,20 @@ class EditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         greetingLabel.text = ""
-        nameField.delegate = self
-        surnameField.delegate = self
+        
         }
 
-    func didResetInfo() {
+    private func hideKeyboard() {
+        view.endEditing(true)
+    }
+   
+    func userDidResetInfo() {
         greetingLabel.text = ""
         ageSwitchPosition.isOn = false
         nameField.text = ""
         surnameField.text = ""
     }
-    
-    private func hideKeyboard() {
-        view.endEditing(true)
-    }
-   
+
     @IBAction private func confirmButtonPressed(_ sender: Any) {
         if ageSwitchPosition.isOn {
             greetingLabel.text = "Hello mr. " + surnameField.text! + "!"
@@ -53,18 +52,19 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
-        didResetInfo()
+        userDidResetInfo()
         hideKeyboard()
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        }
+    }
    }
 
 extension EditViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+   
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
         return true
     }

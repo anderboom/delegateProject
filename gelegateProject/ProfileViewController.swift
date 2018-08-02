@@ -23,13 +23,8 @@ class ProfileViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func editButtonPressed(_ sender: Any) {
-        delegate1?.userDidChange(firstname: nameLabelReturn.text ?? "", lastname: surnameLabelReturn.text ?? "")
-    }
-    
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
