@@ -13,22 +13,32 @@ import UIKit
 class EditViewController: UIViewController {
     
     weak var delegate: EditProfileDelegate?
-    @IBOutlet private weak var ageSwitchPosition: UISwitch!
-    @IBOutlet private weak var nameField: UITextField!
-    @IBOutlet private weak var surnameField: UITextField!
-    @IBOutlet private weak var greetingLabel: UILabel!
-    
+    @IBOutlet  weak var ageSwitchPosition: UISwitch!
+    @IBOutlet  weak var nameField: UITextField!
+    @IBOutlet  weak var surnameField: UITextField!
+    @IBOutlet  weak var greetingLabel: UILabel!
+    var nameValue: String?
+    var surnameValue: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         greetingLabel.text = ""
-        
+        if let name = nameValue {
+            nameField.text = "\(name)"
+        } else {
+            nameField.text = ""
+        }
+        if let surname = surnameValue {
+            surnameField.text = "\(surname)"
+        } else {
+            surnameField.text = ""        }
         }
 
     private func hideKeyboard() {
         view.endEditing(true)
     }
-   
-    func userDidResetInfo() {
+    
+    func userResetInfo() {
         greetingLabel.text = ""
         ageSwitchPosition.isOn = false
         nameField.text = ""
@@ -52,15 +62,16 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
-        userDidResetInfo()
+        userResetInfo()
         hideKeyboard()
     }
-    
+/*
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
-   }
+*/
+}
 
 extension EditViewController: UITextFieldDelegate {
    

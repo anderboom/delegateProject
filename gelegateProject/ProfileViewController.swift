@@ -13,7 +13,7 @@ protocol EditProfileDelegate: class {
     func userDidResetInfo()
 }
 class ProfileViewController: UIViewController {
-    weak var delegate1: EditProfileDelegate?
+  
     @IBOutlet weak var nameLabelReturn: UILabel!
     @IBOutlet weak var surnameLabelReturn: UILabel!
     
@@ -21,23 +21,21 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "moveToEdit" else { return }
         guard let editVC = segue.destination as? EditViewController else { return }
+        editVC.nameValue = nameLabelReturn.text
+        editVC.surnameValue = surnameLabelReturn.text
         editVC.delegate = self
     }
 }
 
 extension ProfileViewController: EditProfileDelegate {
     func userDidChange(firstname: String, lastname: String) {
-        nameLabelReturn.text = "Name: " + firstname
-        surnameLabelReturn.text = "Surname: " + lastname
+        nameLabelReturn.text = firstname
+        surnameLabelReturn.text = lastname
     }
     
     func userDidResetInfo() {
