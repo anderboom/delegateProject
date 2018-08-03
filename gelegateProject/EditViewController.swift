@@ -28,10 +28,12 @@ class EditViewController: UIViewController {
         greetingLabel.text = ""
         nameField.text = nameValue ?? ""
         surnameField.text = surnameValue ?? ""
+        self.nameField.delegate = self
+        self.surnameField.delegate = self
     }
 
     func hideKeyboard() {
-        view.endEditing(true)
+         view.endEditing(true)
     }
 
    @IBAction private func confirmButtonPressed(_ sender: Any) {
@@ -82,6 +84,6 @@ extension EditViewController: UITextFieldDelegate {
    
      func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
-        return true
+        return false
     }
 }
