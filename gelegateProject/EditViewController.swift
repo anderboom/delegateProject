@@ -53,6 +53,7 @@ class EditViewController: UIViewController {
     @IBAction private func resetButtonPressed(_ sender: Any) {
         userDidResetInfo()
         hideKeyboard()
+        delegate?.userDidResetInfo()
     }
 /*
     // MARK: - Navigation
