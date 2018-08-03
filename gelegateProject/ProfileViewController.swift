@@ -8,14 +8,12 @@
 
 import UIKit
 
-protocol EditProfileDelegate: class {
-    func userDidChange(firstname: String, lastname: String)
-    func userDidResetInfo()
-}
+
+
 class ProfileViewController: UIViewController {
   
-    @IBOutlet weak var nameLabelReturn: UILabel!
-    @IBOutlet weak var surnameLabelReturn: UILabel!
+    @IBOutlet private weak var nameLabelReturn: UILabel!
+    @IBOutlet private weak var surnameLabelReturn: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +31,14 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: EditProfileDelegate {
-    func userDidChange(firstname: String, lastname: String) {
-        nameLabelReturn.text = firstname
-        surnameLabelReturn.text = lastname
-    }
     
     func userDidResetInfo() {
         nameLabelReturn.text = ""
         surnameLabelReturn.text = ""
     }
+    
+    func userDidChange(firstname: String, lastname: String) {
+        nameLabelReturn.text = firstname
+        surnameLabelReturn.text = lastname
+   }
 }
